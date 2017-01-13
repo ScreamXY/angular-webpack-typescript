@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+  height: initial !important;
+  overflow: hidden;
+  position: fixed; /* should ipad stop scrolling on html, body */
+}
+
+* {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+body {
+  height: initial !important;
+  -moz-text-size-adjust: none;
+  -webkit-font-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-overflow-scrolling: touch;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  top: 0 !important;
+  position: relative !important;
+}
+
+a {
+  text-decoration: underline;
+  cursor: pointer;
+}
