@@ -60,11 +60,20 @@
     "webpack-dev-server": "^2.1.0-beta.12"
   },
   "scripts": {
-    "test": "karma start",
-    "start": "npm install && npm run-script dev",
-    "dev": "node node_modules/.bin/webpack-dev-server --env.dev --content-base src --host 0.0.0.0",
-    "build": "npm test && rm -rf dist/ && node node_modules/.bin/webpack --env.prod -p && cp src/index.html dist/index.html",
-    "dist": "npm test && rm -rf dist/ && node node_modules/.bin/webpack --env.prod -p && cp src/index.html dist/index.html && node node_modules/.bin/webpack-dev-server --env.prod -p --compress --content-base dist --host 0.0.0.0"
+    "lint": "tslint \"src/**/*.ts\"",
+    "test": "karma start && echo ok || echo not ok",
+    "prestart": "npm install",
+    "start": "npm run-script dev",
+    "dev": "node node_modules/.bin/webpack-dev-server --env.dev --colors --hot --inline --content-base src --host 0.0.0.0 --port 9000",
+    "build": "npm test && rm -rf dist/ && node node_modules/.bin/webpack --env.prod -p",
+    "dist": "npm test && rm -rf dist/ && node node_modules/.bin/webpack --env.prod -p && node node_modules/.bin/webpack-dev-server --env.prod -p --compress --content-base dist --host 0.0.0.0 --port 9000",
+    "prefullbuild": "npm install",
+    "fullbuild": "npm run build",
+    "protractor:update": "node node_modules/protractor/bin/webdriver-manager update",
+    "clean": "npm run clean:src && npm run clean:e2e && npm run clean:stuff",
+    "clean:src": "find src/ -type f -name '*.js' -delete && find src/ -type f -name '*.js.map' -delete && find src/ -empty -type d -delete",
+    "clean:e2e": "find e2e/ -type f -name '*.js' -delete && find e2e/ -type f -name '*.js.map' -delete && find e2e/ -empty -type d -delete",
+    "clean:stuff": "rm -rf coverage && rm -rf dist/* && rm -rf .tmp"
   },
   "author": "scream_xy",
   "license": "MIT"

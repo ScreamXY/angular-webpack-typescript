@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const Path = require("path");
+const FileSystem = require("fs");
 
 const extractCSS = new ExtractTextPlugin({
   filename: "app.css",
@@ -9,7 +11,7 @@ const extractCSS = new ExtractTextPlugin({
 module.exports = env => {
   return {
     context: __dirname,
-    entry: './index.ts',
+    entry: './src/app/index.ts',
     output: {
       filename: "[name].js?[hash]",
       chunkFilename: "[name].js?[hash]",
@@ -46,10 +48,6 @@ module.exports = env => {
         {
           test: /\.css$/,
           loader: extractCSS.extract("css-loader?minimize")
-        },
-        {
-          test: /\.scss/,
-          loader: extractCSS.extract("css-loader?importLoaders=1!postcss-loader!sass-loader")
         },
         {
           test: /\.(gif|jpeg|jpg|png|svg|ico|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,

@@ -1,6 +1,8 @@
 import * as angular from 'angular';
 
 interface AppComponentVm {
+  name: string;
+
   $onInit?(): void;
   $onDestroy?(): void;
   $postLink?(): void;
@@ -8,7 +10,7 @@ interface AppComponentVm {
 
 export function AppComponent() {
   var component: angular.IComponentOptions = {
-    templateUrl: 'app/app.component.html',
+    template: require('./app.component.html'),
     bindings: {},
     controller: AppComponentController,
     controllerAs: 'vm'
@@ -19,5 +21,5 @@ export function AppComponent() {
 function AppComponentController() {
   const vm: AppComponentVm = this;
   console.log('hallo welt');
-  vm.name = 'domi dä noob!!!';
+  vm.name = 'HOME';
 }
